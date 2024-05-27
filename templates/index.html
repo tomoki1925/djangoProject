@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/login.css">
+    <title>ログイン画面</title>
+</head>
+<body>
+    <form action="top" method="post">
+        {% csrf_token %} 
+        <div class = "login_form_top">
+            <h1>管理者ログイン画面</h1>
+            <p>ユーザーid、パスワードを入力の上、「ログイン」ボタンををクリックしてください。</p>
+        </div>
+
+        <div class="login_form_btm">
+            <input type="id" name="user_id" placeholder="ユーザーIDを入力してください"><br>
+            <input type="password" name="password" placeholder="パスワードを入力してください"></br>
+            <button type="submit">ログイン</button>
+        </div>    
+         {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+         {% endif %}
+    </form>
+    
+</body>
+</html>
