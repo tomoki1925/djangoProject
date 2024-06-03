@@ -20,7 +20,7 @@
         </tr>
         {% for hospital in hospitals %}
         <tr>
-            <td>{{hospital.tabyouinid}}</td>
+            <td>{{ hospital.tabyouinid}}</td>
             <td>{{ hospital.tabyouinmei }}</td>
             <td>{{ hospital.tabyouinaddress }}</td>
             <td>{{ hospital.tabyouintel }}<a href= "{% url 'kadai:telchange' hospital.tabyouinid %}">電話番号の変更</a></td>

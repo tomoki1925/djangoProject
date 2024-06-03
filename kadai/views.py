@@ -115,18 +115,16 @@ def hospital_list(request):
 
 def telchange(request,id):
     tabyouin = Tabyouin.objects.get(tabyouinid=id)
+    tabyouinId = tabyouin.tabyouinid
+    request.session['tabyouinId'] = tabyouinId
     return render(request,'telchange.html',{'tabyouin':tabyouin})
 
 
-def telcheck(request,id):
+def telcheck(request):
     if request.method == 'POST':
-        tabyouin = Tabyouin.objects.get(tabyouinid=id)
         newtel = request.POST.get('newtel')
-        context = {
-            'tabyouin': tabyouin,
-            'newtel': newtel
-        }
-        return render(request, 'telLastCheck.html',context)
+        print(newtel)
+        return render(request, 'telLastCheck.html',{'newtel':newtel})
 
 
 
