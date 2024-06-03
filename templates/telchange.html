@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>電話番号変更</title></body>
+</head>
+<body>
+ <form action="{% url 'kadai:telcheck' tabyouin.tabyouinid lastcheak %}">
+         {% csrf_token %}
+        <div class = "">
+            <h2>電話番号変更</h2>
+        </div>
+
+        <div class="">
+            <p>id:{{ tabyouin.tabyouinid }}</p>
+            <p>名前:{{ tabyouin.tabyouinmei }}</p>
+            <p>現在の電話番号：{{ tabyouin.tabyouintel }}</p>
+            <input type="text"  name="newtel" placeholder="新しい電話番号を入力してください"><br>
+            
+        </div>
+          <br><button type="submit">変更確認</button>
+
+    </form>
+
+
+</html>

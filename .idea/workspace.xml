@@ -4,33 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/djangoProject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/isiTop.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/kanrisyaTop.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/static/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/uketukeTop.html" afterDir="false" />
+    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="ログイン">
+      <change afterPath="$PROJECT_DIR$/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/hospitalList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/telLastCheck.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/telchange.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/tourokucheck.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/tourokufinish.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/ztouroku.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kadai/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kadai/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kadai/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/isiTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/isiTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanrisyaTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanrisyaTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/static/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/uketukeTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/uketukeTop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -63,29 +53,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.djangoProject.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "master",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.djangoProject.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\211087\PycharmProjects\djangoProject\templates\static" />
@@ -143,8 +134,24 @@
       <workItem from="1716351598547" duration="2313000" />
       <workItem from="1716354010135" duration="3653000" />
       <workItem from="1716423135649" duration="11854000" />
-      <workItem from="1716768802977" duration="7324000" />
+      <workItem from="1716768802977" duration="7915000" />
+      <workItem from="1716776977746" duration="4606000" />
+      <workItem from="1716861293460" duration="6916000" />
+      <workItem from="1716955663077" duration="6844000" />
+      <workItem from="1717028005175" duration="11844000" />
+      <workItem from="1717114387029" duration="11810000" />
+      <workItem from="1717128607062" duration="773000" />
+      <workItem from="1717373539552" duration="437000" />
     </task>
+    <task id="LOCAL-00001" summary="ログイン">
+      <option name="closed" value="true" />
+      <created>1716776499146</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716776499146</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,5 +167,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ログイン" />
+    <option name="LAST_COMMIT_MESSAGE" value="ログイン" />
   </component>
 </project>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>他病院tel一覧</title>
+</head>
+<body>
+    <h1>他病院一覧</h1>
+    <p>救急フラグが1の場合は救急な対応が必要です</p>
+    <table border="5">
+        <tr>
+            <th>他病院ID</th>
+            <th>他病院名</th>
+            <th>他病院住所</th>
+            <th>他病院電話番号</th>
+            <th>資本金</th>
+            <th>救急フラグ</th>
+        </tr>
+        {% for hospital in hospitals %}
+        <tr>
+            <td>{{hospital.tabyouinid}}</td>
+            <td>{{ hospital.tabyouinmei }}</td>
+            <td>{{ hospital.tabyouinaddress }}</td>
+            <td>{{ hospital.tabyouintel }}<a href= "{% url 'kadai:telchange' hospital.tabyouinid %}">電話番号の変更</a></td>
+            <td>{{ hospital.tabyouinshihonkin }}</td>
+            <td>{{ hospital.kyukyu }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    
+    <a href="">資本金検索</a>
+    <a href="employee_back">管理者画面に戻る</a>
+    
+</body>
+</html>

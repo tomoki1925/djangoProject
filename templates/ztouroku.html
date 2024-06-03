@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>従業員管理</title>
+</head>
+<body>
+    <form action="employee_check" method="post">
+          {% csrf_token %}
+        <div class = "employee_form_top">
+            <h1>従業員管理画面</h1>
+            <p>従業員情報を入力して登録確認ボタンを押してください</p>
+        </div>
+
+        <div class="employee_form_btm">
+            <input type="id" name="userid" placeholder="ユーザーIDを入力してください"><br>
+            <input type="text" name="farstname" placeholder="姓を入力してください"><br>
+            <input type="text" name="lastname" placeholder="名を入力してください"><br>
+            <input type="password" name="passwd" placeholder="パスワードを入力してください"><br>
+            <input type="password" name="passwd2" placeholder="もう一度パスワードを入力してください"><br>
+            <select name = "role">
+                <option value=2>医師</option>
+                <option value=1>受付</option>
+            </select>
+        </div>
+        <button type="submit">登録確認</button>
+        
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    
+        {% if error_pass_message %}
+            <p style="color: red;">{{ error_pass_message }}</p>
+        {% endif %}
+
+
+          
+    </form>
+</body>
+</html>

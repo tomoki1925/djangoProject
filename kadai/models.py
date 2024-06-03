@@ -22,7 +22,7 @@ class Employee(models.Model):
     empid = models.CharField(max_length=8, primary_key=True)
     empfname = models.CharField(max_length=64)
     emplname = models.CharField(max_length=64)
-    emppasswd = models.CharField(max_length=64)  # パスワードのハッシュ化は別途処理が必要
+    emppasswd = models.CharField(max_length=256)  # パスワードのハッシュ化は別途処理が必要
     emprole = models.IntegerField(choices=((1, '受付'), (2, '医師')))
 
 # 患者テーブル
