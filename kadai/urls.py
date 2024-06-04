@@ -10,6 +10,6 @@ urlpatterns = [
     path('employee_check', views.employee_check, name="employee_check"),
     path('employee_back', views.employee_back, name="employee_back"),
     path('hospitalList', views.hospital_list, name="hospital_list"),
-    path('<str:id>', views.telchange, name="telchange"),
     path('telcheck', views.telcheck, name="telcheck"),
+    path('comit', views.telcomit, name="comit"),
 ]
