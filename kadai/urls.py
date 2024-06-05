@@ -12,4 +12,6 @@ urlpatterns = [
     path('hospitalList', views.hospital_list, name="hospital_list"),
     path('telcheck', views.telcheck, name="telcheck"),
     path('comit', views.telcomit, name="comit"),
+    path('CSearch', views.CSearch, name="CSearch"),
+    path('CSearch2', views.CSearch2, name="CSearch2"),
 ]

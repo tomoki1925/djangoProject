@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>資本金検索</title>
+</head>
+<body>
+    <form action="CSearch2" method="post">
+        {% csrf_token %} 
+        <div class = "employee_form_top">
+            <h2>資本金検索</h2>
+        </div>
+
+        <div class="employee_form_btm">
+            <p>検索したい病院の資本金の下限を入力してください</p>
+            <input type="number" name="clower">
+        </div>
+          <br><button type="submit">検索</button>
+
+    </form>
+
+    <table border="5">
+        <tr>
+            <th>他病院ID</th>
+            <th>他病院名</th>
+            <th>他病院住所</th>
+            <th>他病院電話番号</th>
+            <th>資本金</th>
+            <th>救急フラグ</th>
+        </tr>
+        {% for hospital in hospitals %}
+        <tr>
+            <td>{{ hospital.tabyouinid}}</td>
+            <td>{{ hospital.tabyouinmei }}</td>
+            <td>{{ hospital.tabyouinaddress }}</td>
+            <td>{{ hospital.tabyouintel }}</td>
+            <td>{{ hospital.tabyouinshihonkin }}</td>
+            <td>{{ hospital.kyukyu }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>

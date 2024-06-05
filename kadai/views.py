@@ -129,11 +129,25 @@ def telcheck(request):
 def telcomit(request):
     hospital_id = request.session['hospital_id']
     newtel = request.session['newtel']
-    new_hospital = Tabyouin.objects.get(tabyouinid=hospital_id)
+    try:
+        new_hospital = Tabyouin.objects.get(tabyouinid=hospital_id)
+    except Employee.DoesNotExist:
+        return render(request, 'hospitalList.html', {'error_message': '正しい他病院idを指定してください'})
     new_hospital.tabyouintel = newtel
     new_hospital.save()
     tabyouin = Tabyouin.objects.all()
     return render(request, 'hospitalList.html',{'hospitals':tabyouin})
+
+
+def CSearch(request):
+    return render(request, 'capitalSearch.html')
+
+def CSearch2(request):
+    if request.method == 'POST':
+        clower = request.POST.get('clower')
+        hospitals = Tabyouin.objects.filter(tabyouinshihonkin__gte=clower)
+        return render(request, 'capitalSearch.html', {'hospitals':hospitals})
+
 
 
 

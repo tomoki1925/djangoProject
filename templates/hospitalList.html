@@ -38,7 +38,10 @@
         <input type="text" name = "newtel" placeholder="新しい電話番号">
         <button type="submit">変更確認</button>
     </form>
-    <a href="">資本金検索</a>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <a href="{% url 'kadai:CSearch' %}">資本金検索</a>
     <a href="employee_back">管理者画面に戻る</a>
     
 </body>
