@@ -14,4 +14,9 @@ urlpatterns = [
     path('comit', views.telcomit, name="comit"),
     path('CSearch', views.CSearch, name="CSearch"),
     path('CSearch2', views.CSearch2, name="CSearch2"),
+    path('emppass', views.emppass, name="emppass"),
+    path('manager_pass', views.manager_pass, name="manager_pass"),
+    path('uke_pass', views.uke_pass, name="uke_pass"),
+    path('patiReg', views.patiReg, name="patiReg"),
+    path('patient_reg', views.patient_reg, name="patient_reg"),
 ]

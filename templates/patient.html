@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>患者登録</title>
+</head>
+<body>
+    <form action="{% url 'kadai:patient_reg' %}" method="post">
+        {% csrf_token %}
+        <div class = "employee_form_top">
+            <h1>患者登録</h1>
+            <p>患者情報を入力して登録確認ボタンを押してください</p>
+        </div>
+
+        <div class="employee_form_btm">
+            <input type="text" name="pati_id" placeholder="患者IDを入力してください"><br>
+            <input type="text" name="fname" placeholder="患者の姓を入力してください"><br>
+            <input type="text" name="lname" placeholder="患者の名を入力してください"><br>
+            <input type="text" name="icn" placeholder="保険証記号番号"><br>
+            <input type="date" name="date" placeholder="有効期限">
+          </div>
+          <button type="submit">登録</button>
+
+    </form>
+</body>
+</html>

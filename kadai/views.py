@@ -1,6 +1,6 @@
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Employee,Tabyouin
+from .models import Employee,Tabyouin,Patient
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponse
 
@@ -27,6 +27,7 @@ def loginTop(request):
             if employee.emprole == 3:
                 request.session['user_id'] = employee.empid
                 request.session['user_pass'] = employee.emppasswd
+                request.session['user_role'] = employee.emprole
                 return render(request, 'kanrisyaTop.html')
 
         if check_password(password, employee.emppasswd):
@@ -34,10 +35,12 @@ def loginTop(request):
             if employee.emprole == 1:
                 request.session['user_id'] = employee.empid
                 request.session['user_pass'] = employee.emppasswd
+                request.session['user_role'] = employee.emprole
                 return render(request, 'uketukeTop.html')
             elif employee.emprole == 2:
                 request.session['user_id'] = employee.empid
                 request.session['user_pass'] = employee.emppasswd
+                request.session['user_role'] = employee.emprole
                 return render(request, 'isiTop.html')
             else:
                 return render(request, 'index.html', {'error_message': 'Access denied.'})
@@ -142,11 +145,79 @@ def telcomit(request):
 def CSearch(request):
     return render(request, 'capitalSearch.html')
 
+
 def CSearch2(request):
     if request.method == 'POST':
         clower = request.POST.get('clower')
         hospitals = Tabyouin.objects.filter(tabyouinshihonkin__gte=clower)
         return render(request, 'capitalSearch.html', {'hospitals':hospitals})
+
+
+def emppass(request):
+    a = request.session['user_role']
+    if a == 3:
+        return render(request, 'kpassch.html')
+    else:
+        return render(request,'upassch.html')
+
+
+def manager_pass(request):
+    user_id = request.POST.get('user_id')
+    npass = request.POST.get('npass')
+    npass2 = request.POST.get('npass2')
+    if npass == npass2:
+        hashpass = make_password(npass)
+    else:
+        return render(request, 'kpassch.html',{'error_message': 'パスワードが一致しません'})
+
+    try:
+        emp = Employee.objects.get(empid=user_id)
+        emp.emppasswd = hashpass
+        emp.save()
+        return render(request, 'kanrisyaTop.html')
+    except Employee.DoesNotExist:
+        return render(request, 'error.html')
+
+
+def uke_pass(request):
+    user_id = request.session['user_id']
+    npass = request.POST.get('npass')
+    npass2 = request.POST.get('npass2')
+    if npass == npass2:
+        hashpass = make_password(npass)
+    else:
+        return render(request, 'upassch.html', {'error_message': 'パスワードが一致しません'})
+    try:
+        emp = Employee.objects.get(empid=user_id)
+        emp.emppasswd = hashpass
+        emp.save()
+        return render(request, 'uketukeTop.html')
+    except Employee.DoesNotExist:
+        return render(request, 'error.html')
+
+
+def patiReg(request):
+    return render(request, 'patient.html')
+
+
+def patient_reg(request):
+    if request.method == 'POST':
+        pid = request.POST.get('pati_id')
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        icn = request.POST.get('icn')
+        date = request.POST.get('date')
+        patient = Patient(patid=pid, patfname=fname, patlname=lname, hokenmei=icn, hokenexp=date)
+        patient.save()
+        return render(request, 'uketukeTop.html')
+
+
+
+
+
+
+
+
 
 
 

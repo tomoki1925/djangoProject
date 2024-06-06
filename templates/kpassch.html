@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理者パスワード変更</title>
+</head>
+<body>
+<form action="{% url 'kadai:manager_pass' %}" method="post">
+    {% csrf_token %}
+        <div class = "employee_form_top">
+            <h1>従業員パスワード更新画面</h1>
+            <p>ユーザーidと新パスワードを入力してください</p>
+        </div>
+
+        <div class="employee_form_btm">
+            <input type="text" name="user_id" placeholder="ユーザーIDを入力してください"><br>
+            <input type="password" name="npass" placeholder="新パスワードを入力してください"><br>
+            <input type="password" name="npass2" placeholder="もう一度新パスワードを入力してください"><br>
+        </div>
+        <button type="submit">変更確定</button>
+
+</form>
+{% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+{% endif %}
+</body>
+</html>
