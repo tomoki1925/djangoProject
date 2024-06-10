@@ -2,6 +2,7 @@ from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Employee,Tabyouin,Patient
 from django.contrib.auth.hashers import make_password, check_password
+from datetime import datetime
 from django.http import HttpResponse
 
 
@@ -210,6 +211,55 @@ def patient_reg(request):
         patient = Patient(patid=pid, patfname=fname, patlname=lname, hokenmei=icn, hokenexp=date)
         patient.save()
         return render(request, 'uketukeTop.html')
+
+
+def patich(request):
+    patient = Patient.objects.all()
+    return render(request, 'patiinfo.html',{'patients':patient})
+
+
+def patich2(request,patid):
+    patient = Patient.objects.get(patid=patid)
+    return render(request,'patich.html',{'patient':patient})
+
+
+def patient_ch(request):
+    if request.method == 'POST':
+        pid = request.POST.get('pati_id')
+        icn = request.POST.get('icn')
+        date = request.POST.get('date')
+        context={
+            'icn':icn,
+            'date':date,
+            'pid':pid
+        }
+        return render(request,'paticheck.html',context)
+
+
+def patient_dec(request):
+    pid = request.POST.get('pid')
+    icn = request.POST.get('icn')
+    date = request.POST.get('date')
+    patient = Patient.objects.get(patid=pid)
+    nowdate = patient.hokenexp.strftime('%Y-%m-%d')
+    nowmei = patient.hokenmei
+    if icn != nowmei:
+        if date == nowdate:
+            return render(request,'patich.html',{'error_message':'保険証番号を変更する場合は期限も変更してください'})
+        else:
+            patient.hokenexp = date
+            patient.hokenmei = icn
+            patient.save()
+            return render(request,'patilast.html')
+    else:
+        patient.hokenexp = date
+        patient.save()
+        return render(request, 'patilast.html')
+
+
+def patient_top(request):
+    return render(request, 'uketukeTop.html')
+
 
 
 

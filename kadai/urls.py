@@ -19,4 +19,9 @@ urlpatterns = [
     path('uke_pass', views.uke_pass, name="uke_pass"),
     path('patiReg', views.patiReg, name="patiReg"),
     path('patient_reg', views.patient_reg, name="patient_reg"),
+    path('patich', views.patich, name="patich"),
+    path('patient/<str:patid>', views.patich2, name="patich2"),
+    path('patient_ch', views.patient_ch, name="patient_ch"),
+    path('patient_dec', views.patient_dec, name="patient_dec"),
+    path('patient_top', views.patient_top, name="patient_top"),
 ]

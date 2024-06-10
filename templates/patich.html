@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>情報変更</title>
+</head>
+<body>
+<form action="{% url 'kadai:patient_ch' %}" method="post">
+        {% csrf_token %}
+        <div class = "employee_form_top">
+            <h1>患者情報変更</h1>
+            <p>保険証記号を変更する場合は有効期限も確認してください</p>
+        </div>
+
+        <div class="employee_form_btm">
+            <input type="text" name="pati_id" value={{ patient.patid }}><br>
+            <input type="text" name="fname" value={{ patient.patfname }}><br>
+            <input type="text" name="lname" value={{ patient.patlname }}><br>
+            <input type="text" name="icn" value={{ patient.hokenmei }}><br>
+            <input type="date" name="date" value={{ patient.hokenexp|date:"Y-m-d" }}>
+        </div>
+          <button type="submit">変更</button>
+
+</form>
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+</body>
+</html>

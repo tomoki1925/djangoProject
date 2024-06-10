@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>変更確認</title>
+</head>
+<body>
+<form action="{% url 'kadai:patient_dec' %}" method="post">
+        {% csrf_token %}
+    <h1>確認画面</h1>
+    <p>患者id:{{ pid }}</p>
+    <p>保険証番号：{{ icn }}</p>
+    <p>有効期限：{{ date }}</p>
+    <input type="hidden" name="pid" value={{ pid }}>
+    <input type="hidden" name="icn" value={{ icn }}>
+    <input type="hidden" name="date" value={{ date }}>
+    <button type="submit">確定</button>
+</form>    
+</body>
+</html>
