@@ -25,4 +25,6 @@ urlpatterns = [
     path('patient_dec', views.patient_dec, name="patient_dec"),
     path('patient_top', views.patient_top, name="patient_top"),
     path('patserch', views.patserch, name="patserch"),
+    path('zpats', views.zpats, name="zpatis"),
+    path('isi_top', views.isi_top, name="isi_top"),
 ]

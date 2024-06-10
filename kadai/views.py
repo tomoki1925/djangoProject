@@ -266,6 +266,16 @@ def patserch(request):
     patients = Patient.objects.filter(hokenexp__lt=today)
     return render(request, 'patiserch.html', {'patients': patients})
 
+
+def zpats(request):
+    patient = Patient.objects.all()
+    return render(request, 'patizenken.html', {'patients': patient})
+
+
+def isi_top(request):
+    return render(request, 'isiTop.html')
+
+
     
 
 

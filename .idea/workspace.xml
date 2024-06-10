@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="患者情報変更機能">
-      <change afterPath="$PROJECT_DIR$/templates/patiserch.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/ukeserch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/70af343e-28b8-4ac5-93f0-7e23fc2b65e8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/70af343e-28b8-4ac5-93f0-7e23fc2b65e8.xml" afterDir="false" />
+    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="受付一時終了">
+      <change afterPath="$PROJECT_DIR$/templates/patizenken.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kadai/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kadai/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/uketukeTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/uketukeTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/isiTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/isiTop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +153,8 @@
       <workItem from="1717978572171" duration="10971000" />
       <workItem from="1717989579154" duration="652000" />
       <workItem from="1717991858927" duration="1733000" />
+      <workItem from="1717997048530" duration="1652000" />
+      <workItem from="1718000576803" duration="939000" />
     </task>
     <task id="LOCAL-00001" summary="ログイン">
       <option name="closed" value="true" />
@@ -221,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717988342414</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="患者情報変更機能">
+      <option name="closed" value="true" />
+      <created>1717997074066</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717997074066</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
