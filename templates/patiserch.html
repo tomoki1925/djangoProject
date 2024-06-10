@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>期限切れ患者一覧</title>
+</head>
+<body>
+<h1>患者一覧</h1>
+    <table border="5">
+        <tr>
+            <th>患者ID</th>
+            <th>患者名</th>
+            <th>患者姓</th>
+            <th>保険証名記号番号</th>
+            <th>有効期限</th>
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.patid}}</td>
+            <td>{{ patient.patfname }}</td>
+            <td>{{ patient.patlname }}</td>
+            <td>{{ patient.hokenmei }}</td>
+            <td>{{ patient.hokenexp|date:"Y-m-d" }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+<a href="{% url 'kadai:patient_top' %}">トップ画面へ</a>
+</body>
+</html>

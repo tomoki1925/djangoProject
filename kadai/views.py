@@ -261,16 +261,12 @@ def patient_top(request):
     return render(request, 'uketukeTop.html')
 
 
+def patserch(request):
+    today = datetime.now().strftime('%Y-%m-%d')
+    patients = Patient.objects.filter(hokenexp__lt=today)
+    return render(request, 'patiserch.html', {'patients': patients})
 
-
-
-
-
-
-
-
-
-
+    
 
 
 

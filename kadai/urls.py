@@ -24,4 +24,5 @@ urlpatterns = [
     path('patient_ch', views.patient_ch, name="patient_ch"),
     path('patient_dec', views.patient_dec, name="patient_dec"),
     path('patient_top', views.patient_top, name="patient_top"),
+    path('patserch', views.patserch, name="patserch"),
 ]
