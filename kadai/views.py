@@ -1,6 +1,6 @@
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Employee,Tabyouin,Patient
+from .models import Employee,Tabyouin,Patient,Medicine
 from django.contrib.auth.hashers import make_password, check_password
 from datetime import datetime
 from django.http import HttpResponse
@@ -274,6 +274,12 @@ def zpats(request):
 
 def isi_top(request):
     return render(request, 'isiTop.html')
+
+
+def drug(request,pid):
+    request.session['dpatid'] = pid
+    medicine = Medicine.objects.all()
+    return render(request,'drug.html',{'medicines': medicine})
 
 
     

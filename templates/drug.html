@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>薬投与指示</h1>
+    <form action = "" method="post">
+        {% csrf_token %} 
+
+        <table border="5">
+            <tr>
+                <th>投与選択</th>
+                <th>薬剤ID</th>
+                <th>薬剤名</th>
+                <th>投与量</th>
+                <th>単位</th>
+                
+            </tr>
+            {% for medicine in medicines %}
+            <tr>
+                <td><input type="checkbox" name="select_medicine" value="{{ medicine.medicineid }}"></td>
+                <td>{{ medicine.medicineid }}</td>
+                <td>{{ medicine.medicinename }}</td>
+                <td><input type="number" name="quan_{{ medicine.medicineid }}" min="1"></td>
+                <td>{{ medicine.unit }}</td>
+                
+            </tr>
+            
+            {% endfor %}
+    
+        </table>
+        <button type="submit">確認画面へ</button>
+    </form>
+</body>
+</html>

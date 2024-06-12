@@ -27,4 +27,5 @@ urlpatterns = [
     path('patserch', views.patserch, name="patserch"),
     path('zpats', views.zpats, name="zpatis"),
     path('isi_top', views.isi_top, name="isi_top"),
+    path('drug/<str:pid>', views.drug, name="drug"),
 ]

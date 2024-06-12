@@ -21,6 +21,7 @@
             <td>{{ patient.patlname }}</td>
             <td>{{ patient.hokenmei }}</td>
             <td>{{ patient.hokenexp|date:"Y-m-d" }}</td>
+            <td><a href="{% url 'kadai:drug' patient.patid %}">変更</a></td>
         </tr>
         {% endfor %}
 
