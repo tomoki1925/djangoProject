@@ -28,4 +28,6 @@ urlpatterns = [
     path('zpats', views.zpats, name="zpatis"),
     path('isi_top', views.isi_top, name="isi_top"),
     path('drug/<str:pid>', views.drug, name="drug"),
+    path('drug_check', views.drug_check, name="drug_check"),
+    path('del_drug/<str:delid>', views.del_medicine, name="del_medicine"),
 ]

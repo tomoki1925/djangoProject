@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>処方確認</title>
+</head>
+<body>
+        <table border="5">
+            <tr>
+                <th>薬剤ID</th>
+                <th>薬剤名</th>
+                <th>投与量</th>
+                <th>単位</th>
+                
+            </tr>
+            {% for item,quantity in item_quantities.items %}
+            <tr>
+                <td>{{ item.medicineid }}</td>
+                <td>{{ item.medicinename }}</td>
+                <td>{{ quantity }}</td>
+                <td>{{ item.unit }}</td>
+                <td><a href ="{% url 'kadai:del_medicine' item.medicineid %}">削除</a></td>
+            </tr>
+            
+            {% endfor %}
+    
+        </table>
+        <a href ="{% url 'kadai:del_medicine' item.medicineid %}">削除</a>
+        
+        
+</body>
+</html>

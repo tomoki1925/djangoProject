@@ -282,6 +282,39 @@ def drug(request,pid):
     return render(request,'drug.html',{'medicines': medicine})
 
 
+def drug_check(request):
+    if request.method == 'POST':
+        if 'item_quantities' in request.session:
+            medicines_id = request.POST.getlist('select_medicine')
+            item_quantities = {}
+            sitem_quantities = {}
+
+            for medicine_id in medicines_id:
+                medicine = Medicine.objects.get(medicineid=medicine_id)
+                quantity = request.POST.get(f'quan_{medicine_id}')
+                item_quantities[medicine] = int(quantity)
+                sitem_quantities[medicine_id] = int(quantity)
+            request.session['item_quantities'] = sitem_quantities
+            return render(request,'drug_check.html',{'item_quantities': item_quantities})
+
+
+def del_medicine(request,delid):
+    del_quantities = {}
+    after_quantity = {}
+    item_quantities = request.session.get('item_quantities',{})
+    del item_quantities[delid]
+    for item, quantity in item_quantities.items():
+        medicine = Medicine.objects.get(medicineid=item)
+        del_quantities[medicine] = quantity
+        after_quantity[item] = quantity
+    request.session['item_quantities'] = after_quantity
+    return render(request, 'drug_check.html', {'item_quantities': del_quantities})
+
+
+
+
+
+
     
 
 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>薬投与指示</h1>
-    <form action = "" method="post">
+    <form action = "{% url 'kadai:drug_check' %}" method="post">
         {% csrf_token %} 
 
         <table border="5">
