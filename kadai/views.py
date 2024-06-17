@@ -100,6 +100,9 @@ def employee_check(request):
         passwd = request.session['passwd']
         role = request.session['role']
         hashed_password = make_password(passwd)
+        if Employee.objects.filter(empid=id).exists():
+            error_message = 'そのidはすでに登録されています'
+            return render(request, 'ztouroku.html', {'error_message': error_message})
         try:
             employee_form = Employee(empid=id, empfname=fname, emplname=lname, emppasswd=hashed_password, emprole=role)
             employee_form.save()
@@ -167,7 +170,7 @@ def manager_pass(request):
     npass = request.POST.get('npass')
     npass2 = request.POST.get('npass2')
     if not npass or not npass2:
-        return render(request, 'kpassch.html', {'error_message': '入力してください'})
+        return render(request, 'kpassch.html', {'error_message': '入力もれがあります'})
 
     if npass == npass2:
         hashpass = make_password(npass)
@@ -188,7 +191,7 @@ def uke_pass(request):
     npass = request.POST.get('npass')
     npass2 = request.POST.get('npass2')
     if not npass or not npass2:
-        return render(request, 'upassch.html', {'error_message': '入力してください'})
+        return render(request, 'upassch.html', {'error_message': '入力もれがあります'})
     if npass == npass2:
         hashpass = make_password(npass)
     else:
@@ -213,6 +216,20 @@ def patient_reg(request):
         lname = request.POST.get('lname')
         icn = request.POST.get('icn')
         date = request.POST.get('date')
+        today = datetime.now().strftime('%Y-%m-%d')
+        if not pid or not fname or not lname or not icn or not date:
+            return render(request, 'patient.html', {'error_message': '入力もれがあります'})
+
+        if Patient.objects.filter(patid=pid).exists():
+            error_message = 'そのidはすでに登録されています'
+            return render(request, 'patient.html', {'error_message': error_message})
+
+        dates = datetime.strptime(date, '%Y-%m-%d')
+        formatted_date = dates.strftime('%Y-%m-%d')
+
+        if formatted_date <= today:
+            return render(request, 'patient.html', {'error_message': '過去の日にちは登録できません'})
+
         patient = Patient(patid=pid, patfname=fname, patlname=lname, hokenmei=icn, hokenexp=date)
         patient.save()
         return render(request, 'uketukeTop.html')
