@@ -30,4 +30,8 @@ urlpatterns = [
     path('drug/<str:pid>', views.drug, name="drug"),
     path('drug_check', views.drug_check, name="drug_check"),
     path('del_drug/<str:delid>', views.del_medicine, name="del_medicine"),
+    path('drug_top', views.drug_top, name="drug_top"),
+    path('treatment', views.treatment, name="treatment"),
+    path('history', views.history, name="history"),
+    path('treatment_history', views.treatment_history, name="treatment_history"),
 ]

@@ -38,3 +38,13 @@ class Medicine(models.Model):
     medicineid = models.CharField(max_length=8, primary_key=True)
     medicinename = models.CharField(max_length=64)
     unit = models.CharField(max_length=8)
+
+class Treatment(models.Model):
+    patid = models.CharField(max_length=8)
+    patfname = models.CharField(max_length=64)
+    patlname = models.CharField(max_length=64)
+    medicineid = models.CharField(max_length=8)
+    medicinename = models.CharField(max_length=64)
+    unit = models.CharField(max_length=8)
+    quantity = models.IntegerField()
+

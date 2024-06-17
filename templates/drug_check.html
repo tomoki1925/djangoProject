@@ -25,8 +25,8 @@
             {% endfor %}
     
         </table>
-        <a href ="{% url 'kadai:del_medicine' item.medicineid %}">削除</a>
-        
+        <a href ="{% url 'kadai:drug_top' %}">選択画面に戻る</a>
+        <a href="{% url 'kadai:treatment' %}">処置確定</a>
         
 </body>
 </html>

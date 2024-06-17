@@ -1,6 +1,6 @@
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Employee,Tabyouin,Patient,Medicine
+from .models import Employee,Tabyouin,Patient,Medicine,Treatment
 from django.contrib.auth.hashers import make_password, check_password
 from datetime import datetime
 from django.http import HttpResponse
@@ -284,18 +284,37 @@ def drug(request,pid):
 
 def drug_check(request):
     if request.method == 'POST':
-        if 'item_quantities' in request.session:
-            medicines_id = request.POST.getlist('select_medicine')
-            item_quantities = {}
-            sitem_quantities = {}
+        # if 'item_quantities' not in request.session:
+        medicines_id = request.POST.getlist('select_medicine')
+        item_quantities = {}
+        sitem_quantities = {}
 
-            for medicine_id in medicines_id:
-                medicine = Medicine.objects.get(medicineid=medicine_id)
-                quantity = request.POST.get(f'quan_{medicine_id}')
-                item_quantities[medicine] = int(quantity)
-                sitem_quantities[medicine_id] = int(quantity)
-            request.session['item_quantities'] = sitem_quantities
-            return render(request,'drug_check.html',{'item_quantities': item_quantities})
+        for medicine_id in medicines_id:
+            medicine = Medicine.objects.get(medicineid=medicine_id)
+            quantity = request.POST.get(f'quan_{medicine_id}')
+            item_quantities[medicine] = int(quantity)
+            sitem_quantities[medicine_id] = int(quantity)
+        request.session['item_quantities'] = sitem_quantities
+        return render(request,'drug_check.html',{'item_quantities': item_quantities})
+
+        # else:
+        #     medicines_id = request.POST.getlist('select_medicine')
+        #     item_quantities = {}
+        #     sitem_quantities = {}
+        #     ses = request.session.get('item_quantities',{})
+        #     for medicine_id in medicines_id:
+        #         quantity = request.POST.get(f'quan_{medicine_id}')
+        #         sitem_quantities[medicine_id] = int(quantity)
+        #     result = {key: ses[key] for key in ses if key not in sitem_quantities[key] }
+        #     for key, value in result.items():
+        #         sitem_quantities[key] = int(value)
+        #
+        #     request.session['item_quantities'] = sitem_quantities
+        #     for item, quantity in sitem_quantities.items():
+        #         medicine = Medicine.objects.get(medicineid=item)
+        #         item_quantities[medicine] = quantity
+        #     return render(request,'drug_check.html',{'item_quantities': item_quantities})
+        #
 
 
 def del_medicine(request,delid):
@@ -309,6 +328,46 @@ def del_medicine(request,delid):
         after_quantity[item] = quantity
     request.session['item_quantities'] = after_quantity
     return render(request, 'drug_check.html', {'item_quantities': del_quantities})
+
+
+def drug_top(request):
+    medicine = Medicine.objects.all()
+    return render(request,'drug.html',{'medicines': medicine})
+
+
+def treatment(request):
+    pid = request.session['dpatid']
+    item_quantities = request.session.get('item_quantities', {})
+    for key, value in item_quantities.items():
+        medicine = Medicine.objects.get(medicineid=key)
+        patient = Patient.objects.get(patid=pid)
+        i = Treatment(patid=pid, patfname=patient.patfname, patlname=patient.patlname, medicineid=medicine.medicineid,
+                      medicinename=medicine.medicinename,unit=medicine.unit , quantity=value)
+        i.save()
+    return render(request, 'isiTop.html')
+
+
+def history(request):
+    return render(request, 'history.html')
+
+
+def treatment_history(request):
+    patid = request.POST.get('pat_id')
+    try:
+        treatment = Treatment.objects.filter(patid=patid)
+        if treatment:
+            return render(request, 'pat_history.html', {'treatments': treatment})
+        else:
+            return render(request, 'history.html', {'error_message': 'その患者idの処置履歴はありません'})
+
+    except Employee.DoesNotExist:
+        return render(request, 'history.html', {'error_message': 'その患者idの処置履歴はありません'})
+
+
+
+
+
+
 
 
 

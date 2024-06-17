@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>処置履歴一覧</title>
+</head>
+<body>
+    <h1>他病院一覧</h1>
+    <table border="5">
+        <tr>
+            <th>患者ID</th>
+            <th>患者姓</th>
+            <th>患者名</th>
+            <th>薬id</th>
+            <th>薬名</th>
+            <th>単位</th>
+            <th>数量</th>
+        </tr>
+        {% for treatment in treatments %}
+        <tr>
+            <td>{{ treatment.patid}}</td>
+            <td>{{ treatment.patfname }}</td>
+            <td>{{ treatment.patlname }}</td>
+            <td>{{ treatment.medicineid }}</td>
+            <td>{{ treatment.medicinename }}</td>
+            <td>{{ treatment.unit }}</td>
+            <td>{{ treatment.quantity }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    
+    <a href="{% url 'kadai:isi_top' %}">管理者画面に戻る</a>
+</body>
+</html>

@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="処置選択画面">
-      <change afterPath="$PROJECT_DIR$/templates/drug_check.html" afterDir="false" />
+    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="削除機能後">
+      <change afterPath="$PROJECT_DIR$/templates/history.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pat_history.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/70af343e-28b8-4ac5-93f0-7e23fc2b65e8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/70af343e-28b8-4ac5-93f0-7e23fc2b65e8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kadai/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kadai/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kadai/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/capitalSearch.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/capitalSearch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/drug.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/drug.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patizenken.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patizenken.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/drug_check.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/drug_check.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/isiTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/isiTop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +162,9 @@
       <workItem from="1718000576803" duration="1531000" />
       <workItem from="1718070912007" duration="5677000" />
       <workItem from="1718166373765" duration="5693000" />
-      <workItem from="1718237593196" duration="11720000" />
+      <workItem from="1718237593196" duration="11914000" />
+      <workItem from="1718324176375" duration="14802000" />
+      <workItem from="1718583153724" duration="5332000" />
     </task>
     <task id="LOCAL-00001" summary="ログイン">
       <option name="closed" value="true" />
@@ -251,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718171975404</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="削除機能後">
+      <option name="closed" value="true" />
+      <created>1718249407093</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1718249407093</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +286,7 @@
     <MESSAGE value="患者情報変更機能" />
     <MESSAGE value="患者全権検索（仮）終" />
     <MESSAGE value="処置選択画面" />
-    <option name="LAST_COMMIT_MESSAGE" value="処置選択画面" />
+    <MESSAGE value="削除機能後" />
+    <option name="LAST_COMMIT_MESSAGE" value="削除機能後" />
   </component>
 </project>
