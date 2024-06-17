@@ -166,6 +166,9 @@ def manager_pass(request):
     user_id = request.POST.get('user_id')
     npass = request.POST.get('npass')
     npass2 = request.POST.get('npass2')
+    if not npass or not npass2:
+        return render(request, 'kpassch.html', {'error_message': '入力してください'})
+
     if npass == npass2:
         hashpass = make_password(npass)
     else:
@@ -175,7 +178,7 @@ def manager_pass(request):
         emp = Employee.objects.get(empid=user_id)
         emp.emppasswd = hashpass
         emp.save()
-        return render(request, 'kanrisyaTop.html')
+        return render(request, 'chenge.html')
     except Employee.DoesNotExist:
         return render(request, 'error.html')
 
@@ -184,6 +187,8 @@ def uke_pass(request):
     user_id = request.session['user_id']
     npass = request.POST.get('npass')
     npass2 = request.POST.get('npass2')
+    if not npass or not npass2:
+        return render(request, 'upassch.html', {'error_message': '入力してください'})
     if npass == npass2:
         hashpass = make_password(npass)
     else:
@@ -192,7 +197,7 @@ def uke_pass(request):
         emp = Employee.objects.get(empid=user_id)
         emp.emppasswd = hashpass
         emp.save()
-        return render(request, 'uketukeTop.html')
+        return render(request, 'ukechange.html')
     except Employee.DoesNotExist:
         return render(request, 'error.html')
 
