@@ -122,14 +122,35 @@ def hospital_list(request):
 
 def telcheck(request):
     hospital_id = request.POST.get('hospital_id')
-    newtel = request.POST.get('newtel')
+    newtels = request.POST.get('newtel')
+    char_remove = "()-（）ー"
+    table = str.maketrans('', '', char_remove)
+    newtel = newtels.translate(table)
+    if len(newtel) < 10:
+        tabyouin = Tabyouin.objects.all()
+        context = {
+            'error_message':'正しく入力してください',
+            'hospitals': tabyouin
+        }
+        return render(request, 'hospitalList.html', context)
+    try:
+        a = int(newtel)
+    except ValueError:
+        tabyouin = Tabyouin.objects.all()
+        context = {
+            'error_message': '正しく入力してください',
+            'hospitals': tabyouin
+        }
+        return render(request, 'hospitalList.html', context)
+
     request.session['hospital_id'] = hospital_id
-    request.session['newtel'] = newtel
+    request.session['newtel'] = newtels
     tabyouin = Tabyouin.objects.get(tabyouinid=hospital_id)
     context = {
         'tabyouin': tabyouin,
-        'newtel': newtel
+        'newtel': newtels
     }
+
     return render(request,'telLastCheck.html',context)
 
 
@@ -153,7 +174,15 @@ def CSearch(request):
 def CSearch2(request):
     if request.method == 'POST':
         clower = request.POST.get('clower')
-        hospitals = Tabyouin.objects.filter(tabyouinshihonkin__gte=clower)
+        char_remove = ",，￥"
+        table = str.maketrans('', '', char_remove)
+        newclower = clower.translate(table)
+        try:
+            newclower = int(newclower)
+        except ValueError:
+            return render(request, 'capitalSearch.html',{'error_message': '数値を入力してください'})
+
+        hospitals = Tabyouin.objects.filter(tabyouinshihonkin__gte=newclower)
         return render(request, 'capitalSearch.html', {'hospitals':hospitals})
 
 

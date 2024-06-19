@@ -13,7 +13,7 @@
 
         <div class="employee_form_btm">
             <p>検索したい病院の資本金の下限を入力してください</p>
-            <input type="number" name="clower">
+            <input type="text" name="clower">
         </div>
           <br><button type="submit">検索</button>
 
@@ -40,5 +40,9 @@
         {% endfor %}
 
     </table>
+    <p><a href="{% url 'kadai:employee_back' %}">トップ画面へ</a></p>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
 </body>
 </html>
