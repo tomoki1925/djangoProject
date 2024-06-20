@@ -54,7 +54,7 @@ def loginTop(request):
 def logout(request):
     # Clear session data
     request.session.flush()
-    return redirect('index')
+    return render(request, 'index.html')
 
 
 def employee(request):
@@ -261,7 +261,7 @@ def patient_reg(request):
 
         patient = Patient(patid=pid, patfname=fname, patlname=lname, hokenmei=icn, hokenexp=date)
         patient.save()
-        return render(request, 'uketukeTop.html')
+        return render(request, 'patilast.html')
 
 
 def patich(request):
@@ -340,14 +340,29 @@ def drug_check(request):
         item_quantities = {}
         sitem_quantities = {}
 
-        for medicine_id in medicines_id:
-            medicine = Medicine.objects.get(medicineid=medicine_id)
-            quantity = request.POST.get(f'quan_{medicine_id}')
-            item_quantities[medicine] = int(quantity)
-            sitem_quantities[medicine_id] = int(quantity)
-        request.session['item_quantities'] = sitem_quantities
-        return render(request,'drug_check.html',{'item_quantities': item_quantities})
+        try:
+            for medicine_id in medicines_id:
+                medicine = Medicine.objects.get(medicineid=medicine_id)
+                quantity = request.POST.get(f'quan_{medicine_id}')
+                if int(quantity) < 0:
+                    medicine = Medicine.objects.all()
+                    context = {
+                        'medicines': medicine,
+                        'error_message': '不正な数値です'
+                    }
+                    return render(request, 'drug.html', context)
 
+                item_quantities[medicine] = int(quantity)
+                sitem_quantities[medicine_id] = int(quantity)
+            request.session['item_quantities'] = sitem_quantities
+            return render(request,'drug_check.html',{'item_quantities': item_quantities})
+        except ValueError:
+            medicine = Medicine.objects.all()
+            context = {
+                'medicines':medicine,
+                'error_message':'数量を入力してください'
+            }
+            return render(request, 'drug.html',context)
         # else:
         #     medicines_id = request.POST.getlist('select_medicine')
         #     item_quantities = {}

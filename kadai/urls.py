@@ -5,6 +5,7 @@ app_name = 'kadai'
 
 urlpatterns = [
     path('', views.index, name="index"),
+    path('logout', views.logout, name="logout"),
     path('top', views.loginTop, name="top"),
     path('employee', views.employee, name="employee"),
     path('employee_check', views.employee_check, name="employee_check"),
