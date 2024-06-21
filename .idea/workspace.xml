@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="医師テスト前">
+    <list default="true" id="3ed856d0-78e5-4e9b-abba-365e92bb858f" name="Changes" comment="テスト終了（仮）">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/70af343e-28b8-4ac5-93f0-7e23fc2b65e8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/70af343e-28b8-4ac5-93f0-7e23fc2b65e8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kadai/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoProject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kadai/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/drug.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/drug.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/isiTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/isiTop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/kanrisyaTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanrisyaTop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patilast.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patilast.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/uketukeTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/uketukeTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patich.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patich.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,12 +97,13 @@
         <env name="DJANGO_SETTINGS_MODULE" value="djangoProject.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (djangoProject)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
+      <option name="port" value="8080" />
       <option name="host" value="localhost" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
@@ -165,7 +163,8 @@
       <workItem from="1718324176375" duration="14802000" />
       <workItem from="1718583153724" duration="22750000" />
       <workItem from="1718769324238" duration="7632000" />
-      <workItem from="1718842397537" duration="4758000" />
+      <workItem from="1718842397537" duration="13741000" />
+      <workItem from="1718928676048" duration="4096000" />
     </task>
     <task id="LOCAL-00001" summary="ログイン">
       <option name="closed" value="true" />
@@ -295,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718776798770</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="テスト終了（仮）">
+      <option name="closed" value="true" />
+      <created>1718847463386</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718847463386</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +330,7 @@
     <MESSAGE value="全機能終了（テスト前）" />
     <MESSAGE value="登録機能テスト後" />
     <MESSAGE value="医師テスト前" />
-    <option name="LAST_COMMIT_MESSAGE" value="医師テスト前" />
+    <MESSAGE value="テスト終了（仮）" />
+    <option name="LAST_COMMIT_MESSAGE" value="テスト終了（仮）" />
   </component>
 </project>

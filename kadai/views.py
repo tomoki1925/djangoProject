@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Employee,Tabyouin,Patient,Medicine,Treatment
 from django.contrib.auth.hashers import make_password, check_password
 from datetime import datetime
+from django.db import DataError
 from django.http import HttpResponse
 
 
@@ -121,6 +122,7 @@ def hospital_list(request):
 
 
 def telcheck(request):
+
     hospital_id = request.POST.get('hospital_id')
     newtels = request.POST.get('newtel')
     char_remove = "()-（）ー"
@@ -145,7 +147,14 @@ def telcheck(request):
 
     request.session['hospital_id'] = hospital_id
     request.session['newtel'] = newtels
-    tabyouin = Tabyouin.objects.get(tabyouinid=hospital_id)
+    tabyouin = Tabyouin.objects.filter(tabyouinid=hospital_id)
+    if not tabyouin.exists():
+        tabyouin = Tabyouin.objects.all()
+        context = {
+            'error_message': 'idの入力に誤りがあります',
+            'hospitals': tabyouin
+        }
+        return render(request, 'hospitalList.html', context)
     context = {
         'tabyouin': tabyouin,
         'newtel': newtels
@@ -161,10 +170,19 @@ def telcomit(request):
         new_hospital = Tabyouin.objects.get(tabyouinid=hospital_id)
     except Employee.DoesNotExist:
         return render(request, 'hospitalList.html', {'error_message': '正しい他病院idを指定してください'})
-    new_hospital.tabyouintel = newtel
-    new_hospital.save()
-    tabyouin = Tabyouin.objects.all()
-    return render(request, 'hospitalList.html',{'hospitals':tabyouin})
+
+    try:
+        new_hospital.tabyouintel = newtel
+        new_hospital.save()
+        tabyouin = Tabyouin.objects.all()
+        return render(request, 'hospitalList.html',{'hospitals':tabyouin})
+    except DataError:
+        tabyouin = Tabyouin.objects.all()
+        context = {
+            'error_message': '電話番号を入力してください',
+            'hospitals': tabyouin
+        }
+        return render(request, 'hospitalList.html', context)
 
 
 def CSearch(request):
@@ -255,6 +273,10 @@ def patient_reg(request):
 
         dates = datetime.strptime(date, '%Y-%m-%d')
         formatted_date = dates.strftime('%Y-%m-%d')
+        try:
+            a = int(date)
+        except ValueError:
+            return render(request, 'patient.html', {'error_message': '入力もれがあります'})
 
         if formatted_date <= today:
             return render(request, 'patient.html', {'error_message': '過去の日にちは登録できません'})
@@ -271,12 +293,13 @@ def patich(request):
 
 def patich2(request,patid):
     patient = Patient.objects.get(patid=patid)
+    request.session['patientid'] = patid
     return render(request,'patich.html',{'patient':patient})
 
 
 def patient_ch(request):
     if request.method == 'POST':
-        pid = request.POST.get('pati_id')
+        pid = request.session['patientid']
         icn = request.POST.get('icn')
         date = request.POST.get('date')
         context={
@@ -296,13 +319,35 @@ def patient_dec(request):
     nowmei = patient.hokenmei
     if icn != nowmei:
         if date == nowdate:
-            return render(request,'patich.html',{'error_message':'保険証番号を変更する場合は期限も変更してください'})
+            pid = request.session['patientid']
+            patient = Patient.objects.get(patid=pid)
+            context = {
+                'error_message': '保険証番号を変更する場合は期限も変更してください',
+                'patient':patient
+            }
+            return render(request,'patich.html',context)
         else:
+            if date <= nowdate:
+                pid = request.session['patientid']
+                patient = Patient.objects.get(patid=pid)
+                context = {
+                    'error_message': '現在の期限より前の日つけは登録できません',
+                    'patient': patient
+                }
+                return render(request, 'patich.html', context)
             patient.hokenexp = date
             patient.hokenmei = icn
             patient.save()
             return render(request,'patilast.html')
     else:
+        if date <= nowdate:
+            pid = request.session['patientid']
+            patient = Patient.objects.get(patid=pid)
+            context = {
+                'error_message': '現在の期限より前の日つけは登録できません',
+                'patient': patient
+            }
+            return render(request, 'patich.html', context)
         patient.hokenexp = date
         patient.save()
         return render(request, 'patilast.html')
@@ -319,6 +364,7 @@ def patserch(request):
 
 
 def zpats(request):
+
     patient = Patient.objects.all()
     return render(request, 'patizenken.html', {'patients': patient})
 

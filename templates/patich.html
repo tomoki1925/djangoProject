@@ -13,9 +13,9 @@
         </div>
 
         <div class="employee_form_btm">
-            <input type="text" name="pati_id" value={{ patient.patid }}><br>
-            <input type="text" name="fname" value={{ patient.patfname }}><br>
-            <input type="text" name="lname" value={{ patient.patlname }}><br>
+            <p>患者id:{{ patient.patid }}</p>
+            <p>患者姓：{{ patient.patfname }}</p>
+            <p>患者名：{{ patient.patlname }}</p>
             <input type="text" name="icn" value={{ patient.hokenmei }}><br>
             <input type="date" name="date" value={{ patient.hokenexp|date:"Y-m-d" }}>
         </div>
