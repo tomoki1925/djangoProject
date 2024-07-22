@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>患者検索</title>
+    <title>id検索</title>
 </head>
 <body>
-<h1>患者検索（名前）</h1>
-    <form action="{% url 'kadai:zpatis' %}" method="post">
+<h1>患者検索（id）</h1>
+    <form action="{% url 'kadai:patiidse' %}" method="post">
         {% csrf_token %}
 
         <div class="login_form_btm">
-            <input type="text" name="sei" placeholder="姓を入力してください">
-            <input type="text" name="mei" placeholder="名を入力してください">
+            <input type="text" name="patient" placeholder="idを入力してください">
             <button type="submit">検索</button>
         </div>    
          {% if error_message %}

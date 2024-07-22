@@ -155,12 +155,14 @@ def telcheck(request):
             'hospitals': tabyouin
         }
         return render(request, 'hospitalList.html', context)
+
+    tabyou = Tabyouin.objects.get(tabyouinid=hospital_id)
     context = {
-        'tabyouin': tabyouin,
+        'tabyouin': tabyou,
         'newtel': newtels
     }
 
-    return render(request,'telLastCheck.html',context)
+    return render(request,'telLastCheck.html', context)
 
 
 def telcomit(request):
@@ -195,6 +197,8 @@ def CSearch2(request):
         char_remove = ",，￥"
         table = str.maketrans('', '', char_remove)
         newclower = clower.translate(table)
+        if int(clower) < 0:
+            return render(request, 'capitalSearch.html', {'error_message': '自然数を入力してください'})
         try:
             newclower = int(newclower)
         except ValueError:
@@ -273,13 +277,16 @@ def patient_reg(request):
 
         dates = datetime.strptime(date, '%Y-%m-%d')
         formatted_date = dates.strftime('%Y-%m-%d')
-        try:
-            a = int(date)
-        except ValueError:
-            return render(request, 'patient.html', {'error_message': '入力もれがあります'})
 
         if formatted_date <= today:
             return render(request, 'patient.html', {'error_message': '過去の日にちは登録できません'})
+
+        try:
+            a = int(icn)
+            if not len(icn) == 10:
+                return render(request, 'patient.html', {'error_message': '保険番号は１０桁で入力してください'})
+        except ValueError:
+            return render(request, 'patient.html', {'error_message': '保険番号は数値で入力してください'})
 
         patient = Patient(patid=pid, patfname=fname, patlname=lname, hokenmei=icn, hokenexp=date)
         patient.save()
@@ -317,6 +324,24 @@ def patient_dec(request):
     patient = Patient.objects.get(patid=pid)
     nowdate = patient.hokenexp.strftime('%Y-%m-%d')
     nowmei = patient.hokenmei
+    try:
+        a = int(icn)
+        if not len(icn) == 10:
+            pid = request.session['patientid']
+            patient = Patient.objects.get(patid=pid)
+            context = {
+                'error_message': '保険証番号は１０桁でお願いします',
+                'patient': patient
+            }
+            return render(request, 'patich.html', context)
+    except ValueError:
+        pid = request.session['patientid']
+        patient = Patient.objects.get(patid=pid)
+        context = {
+            'error_message': '保険証番号をきちんと入力してください',
+            'patient': patient
+        }
+        return render(request, 'patich.html', context)
     if icn != nowmei:
         if date == nowdate:
             pid = request.session['patientid']
@@ -364,9 +389,50 @@ def patserch(request):
 
 
 def zpats(request):
+    if request.method == 'POST':
+        sei = request.POST.get('sei')
+        mei = request.POST.get('mei')
+        if sei and mei:
+            sei = Patient.objects.filter(patfname__icontains=sei)
+            mei = Patient.objects.filter(patlname__icontains=mei)
+            if not sei.exists() and not mei.exists():
+                return render(request, 'patizenken.html', {'error_message': '結果が見つかりません'})
+            elif sei.exists():
+                return render(request, 'patizenken.html', {'error_message': '結果が見つかりません'})
+            elif mei.exists():
+                return render(request, 'patizenken.html', {'error_message': '結果が見つかりません'})
+            else:
+                hul = Patient.objects.filter(patfname__icontains=sei, patlname__icontains=mei)
+                return render(request, 'patizenken.html', {'patients': hul})
+        elif not sei:
+            mei = Patient.objects.filter(patlname__icontains=mei)
+            if not mei.exists():
+                return render(request, 'patizenken.html', {'error_message': '結果が見つかりません'})
+            return render(request, 'patizenken.html', {'patients': mei})
+        else:
+            sei = Patient.objects.filter(patfname__icontains=sei)
+            if not sei.exists():
+                return render(request, 'patizenken.html', {'error_message': '結果が見つかりません'})
+            return render(request, 'patizenken.html', {'patients': sei})
 
+    else:
+        return render(request, 'patizenken.html')
+
+
+def patiidse(request):
+    if request.method == 'POST':
+        patient = request.POST.get('patient')
+        pid = Patient.objects.filter(patid=patient)
+        if not pid.exists():
+            return render(request, 'patiidse.html', {'error_message': '結果が見つかりません'})
+        return render(request, 'patiidse.html', {'patients': pid})
+    else:
+        return render(request, 'patiidse.html')
+
+
+def zenken(request):
     patient = Patient.objects.all()
-    return render(request, 'patizenken.html', {'patients': patient})
+    return render(request, 'zenken.html',{'patients': patient})
 
 
 def isi_top(request):

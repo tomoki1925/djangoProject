@@ -4,7 +4,7 @@ class Tabyouin(models.Model):
     tabyouinid = models.CharField(max_length=8, primary_key=True)
     tabyouinmei = models.CharField(max_length=64)
     tabyouinaddress = models.CharField(max_length=64)
-    tabyouintel = models.CharField(max_length=13)
+    tabyouintel = models.CharField(max_length=15)
     tabyouinshihonkin = models.IntegerField()
     kyukyu = models.IntegerField(choices=((1, '救急対応'), (2, '非救急')))
 
@@ -13,7 +13,7 @@ class Shiiregyosha(models.Model):
     shiireid = models.CharField(max_length=8, primary_key=True)
     shiiremei = models.CharField(max_length=64)
     shiireaddress = models.CharField(max_length=64)
-    shiiretel = models.CharField(max_length=13)
+    shiiretel = models.CharField(max_length=15)
     shihonkin = models.IntegerField()
     nouki = models.IntegerField()
 
