@@ -37,4 +37,5 @@ urlpatterns = [
     path('treatment', views.treatment, name="treatment"),
     path('history', views.history, name="history"),
     path('treatment_history', views.treatment_history, name="treatment_history"),
+    path('sizengengo', views.sizengengo, name="sizengengo"),
 ]

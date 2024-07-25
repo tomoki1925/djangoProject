@@ -4,6 +4,9 @@ from .models import Employee,Tabyouin,Patient,Medicine,Treatment
 from django.contrib.auth.hashers import make_password, check_password
 from datetime import datetime
 from django.db import DataError
+import os
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+from transformers import pipeline
 from django.http import HttpResponse
 
 
@@ -542,6 +545,19 @@ def treatment_history(request):
         return render(request, 'history.html', {'error_message': 'その患者idの処置履歴はありません'})
 
 
+def sizengengo(request):
+    if request.method == 'POST':
+        pron = request.POST.get('pron')
+        generator = pipeline('text-generation', model='gpt2')
+        generated_text = generator(pron, max_length=50, num_return_sequences=1, truncation=True)
+        generated_text = generated_text[0]
+        generated_text = ''.join(str(value) for value in generated_text.values())
+        char_remove = "{}n'￥"
+        table = str.maketrans('', '', char_remove)
+        generated_text = generated_text.translate(table)
+        return render(request, 'sizengengo.html',{'message':generated_text})
+    else:
+        return render(request, 'sizengengo.html')
 
 
 

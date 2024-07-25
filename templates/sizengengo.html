@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自然言語処理</title>
+</head>
+<body>
+<h1>AIと会話する</h1>
+<form action="sizengengo" method="post">
+    {% csrf_token %}
+    <input type="text" name = "pron">
+    <button type = "submit">会話する</button>
+</form>
+{% if message %}
+    {{ message }}
+{% endif %}
+</body>
+</html>
